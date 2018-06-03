@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Техніка</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="res/favicon.ico">
+</head>
+<body ng-app = "coursework">
+<div id="menuSidenav" class="sidenav">
+    <div class="navTitle">
+        <img class="titleLogo" src="res/logo.svg">
+        <div class="titleText">Ziggy Ent.</div>
+    </div>
+    <div class="navBody">
+        <a href="../">Титульна сторінка</a>
+    </div>
+    <div class="navSeparator">Таблиці</div>
+    <div class="navBody">
+        <a href="areas.html">Ділянки</a>
+        <a href="building_management.html">Буд. керування</a>
+        <a href="machinery.html"> Характеристика </a>
+        <a href="construction_technology.html">Технології будівництва</a>
+        <div class="navDisabled">Техніка</div>
+        <a href="material.html">Матеріал</a>
+        <a href="type_of_object.html">Тип об'єкту</a>
+        <a href="objects.html">Об'єкти</a>
+        <a href="brigades.html">Бригади</a>
+        <a href="employee.html">Робітники</a>
+        <a href="estimate.html">Кошторис</a>
+    </div>
+    <div class="navSeparator">Запити</div>
+
+    <div class="navBottom">Андрій Нігайчук @ 2018</div>
+</div>
+<div id="main" ng-controller = "AppCtrl as ctrl">
+    <div class="container-fluid">
+        <div class="panel-heading"> Техніка </div>
+        <div class="datagrid">
+            <table >
+                <thead>
+                <tr>
+                    <!--<th width="40px">ID</th>-->
+                    <th><a href="#" ng-click="ctrl.changeSort('name')">Назва техніки</a>
+                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th width="60px" style="padding: 0px">
+                        <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
+                                style="width: 60px; cursor:pointer;" ng-click="ctrl.start_insert_entry()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat = "item in entries | orderBy:sortType:sortReverse">
+                    <!--<td>{{item.id}}</td>-->
+                    <td>{{item.name}}</td>
+                    <td style="padding: 0px">
+                        <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
+                                ng-click="ctrl.start_update_entry(item.id, item.name)"
+                                style="width: 40px; cursor:pointer">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button type="button" class="btn-danger"
+                                ng-click="ctrl.del_entry(item.id)"
+                                style="width: 20px; padding-left: 0; margin-left: -3px; margin-right: -1px; cursor:pointer">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+
+        <!--додавання -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="addModalLabel">Додавання запису</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="column left">Назва техніки</div>
+                            <div class="column right"><input type="text" id="Name"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal">Скасувати</button>
+                        <button class="addButton" type="button"  ng-click="ctrl.insert_entry()">Додати</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--редагування-->
+        <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Редагування запису</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="column left">Назва техніки</div>
+                            <div class="column right"><input type="text" id="NameUPD"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal">Скасувати</button>
+                        <button class="updateButton" type="button"  ng-click="ctrl.update_entry()">Змінити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="js/libs/jquery-3.3.1.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/libs/angular.min.js"></script>
+<script type="text/javascript" src="js/machinery.js"></script>
+
+</html>

@@ -1,0 +1,80 @@
+#main {
+    margin-left: 230px;
+    margin-top: 80px;
+}
+
+#menuSidenav {
+    font: bold 12px Calibri, Helvetica, sans-serif;
+    overflow: auto;
+    height: 100%;
+    width: 230px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #61438b;
+    overflow-x: hidden;
+    transition: 0.5s;
+    text-align: left;
+    text-decoration: none;
+    font-size: 16px;
+    color: whitesmoke;
+    display: block;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: whitesmoke;
+    display: block;
+    border-bottom: 1px solid #372b56;
+}
+
+.sidenav a:hover {
+    background-color: #543f7a;
+}
+
+.navDisabled {
+    padding: 5px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: whitesmoke;
+    display: block;
+    border-bottom: 1px solid #372b56;
+    background-color: #6a5591;
+    height: 22px;
+}
+
+.navTitle {
+    font-size: 26px;
+    background-color: #4e386e;
+    border-bottom: 3px solid #372b56;
+    height: 67px;
+}
+
+.titleLogo {
+    margin-left: 16px;
+    margin-top: 16px;
+    width: 34px;
+}
+
+.titleText {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 18px;
+}
+
+.navSeparator {
+    padding-left: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 22px;
+    border-bottom: 2px solid #382e5c;
+}
+
+.navBody {
+    background-color: #4e386e;
+    border-bottom: 1px solid #855aaf;
+    font-weight: normal;
+}

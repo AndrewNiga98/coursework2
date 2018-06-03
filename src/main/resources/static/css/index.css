@@ -1,0 +1,218 @@
+body {
+    font: bold 12px Calibri, Helvetica, sans-serif;
+    text-align: center;
+    background: whitesmoke;
+    overflow: auto;
+    font-size: 30px;
+    color: #5d5a70;
+}
+
+.panel-heading {
+    margin-bottom: 30px;
+}
+
+.datagrid table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+
+.datagrid {
+    font: normal 12px/150% Calibri, Helvetica, sans-serif;
+    background: #fff;
+    border: 1px solid #814e9f;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+}
+
+.datagrid table thead th {
+    background: #61438b;
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: bold;
+    border-left: 1px solid #ae53cd;
+    padding-left: 8px;
+    height: 38px;
+}
+
+.datagrid table thead th:first-child {
+    border: none;
+}
+
+.datagrid table tbody td {
+    color: #0f0f0f;
+    border-left: 1px solid #814e9f;
+    font-size: 15px;
+    font-weight: normal;
+    padding-left: 8px;
+}
+
+.datagrid table tbody tr {
+    height: 38px;
+}
+
+.datagrid table tbody tr:nth-child(even) {
+    background: #cdbeff;
+    /*background: #fff5d8;*/
+    color: #0f0f0f;
+}
+
+.datagrid table tbody td:first-child {
+    border-left: none;
+}
+
+.datagrid table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.checkbox {
+    transform:scale(1.9);
+    opacity:0.9;
+    cursor:pointer;
+}
+
+.modal-body {
+    font-size: 22px;
+}
+
+.row {
+    display: flex;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+}
+
+.left {
+    width: 30%;
+    text-align: left;
+}
+
+.right {
+    width: 70%;
+}
+
+input, select {
+    width: 100%;
+}
+
+button {
+    position: relative;
+    height: 38px;
+}
+
+.modal-footer {
+    font-size: 20px;
+}
+
+#main {
+    margin-left: 230px;
+    margin-top: 26px;
+}
+
+#menuSidenav {
+    height: 100%;
+    width: 230px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #61438b;
+    overflow-x: hidden;
+    transition: 0.5s;
+    text-align: left;
+    text-decoration: none;
+    font-size: 16px;
+    color: whitesmoke;
+    display: block;
+    padding-bottom: 16px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: whitesmoke;
+    display: block;
+    border-bottom: 1px solid #372b56;
+    height: 36px;
+}
+
+.sidenav a:hover {
+    background-color: #543f7a;
+}
+
+.navDisabled {
+    padding: 5px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: whitesmoke;
+    display: block;
+    border-bottom: 1px solid #372b56;
+    background-color: #6a5591;
+    height: 36px;
+}
+
+.navTitle {
+    padding: 16px;
+    font-size: 26px;
+    background-color: #4e386e;
+    border-bottom: 3px solid #372b56;
+    height: 70px;
+}
+
+.titleLogo {
+    width: 34px;
+}
+
+.titleText {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 2px;
+}
+
+.navSeparator {
+    padding-left: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 22px;
+    border-bottom: 2px solid #382e5c;
+}
+
+.navBody {
+    background-color: #4e386e;
+    border-bottom: 1px solid #855aaf;
+    font-weight: normal;
+}
+
+.navBottom {
+    padding-left: 16px;
+    padding-top: 12px;
+    font-weight: normal;
+}
+
+tr a, tr a:hover {
+    color: whitesmoke;
+}
+
+.queryOption {
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.button-main {
+    width: 90px;
+    height: 28px;
+    padding: 0;
+    margin-top: -5px;
+    vertical-align: middle;
+    font-size: 16px
+}
+
+.queryInput {
+    width: 200px;
+}

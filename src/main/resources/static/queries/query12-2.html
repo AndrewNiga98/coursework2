@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Запит 12-2</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="icon" href="../res/favicon.ico">
+</head>
+<body ng-app = "coursework">
+<div id="menuSidenav" class="sidenav">
+    <div class="navTitle">
+        <img class="titleLogo" src="../res/logo.svg">
+        <div class="titleText">McKiddo Inc.</div>
+    </div>
+    <div class="navBody">
+        <a href="../">Титульна сторінка</a>
+    </div>
+    <div class="navSeparator">Таблиці</div>
+    <div class="navBody">
+        <a href="../attributes.html">Атрибути</a>
+        <a href="../departments.html">Відділи</a>
+        <a href="../project_groups.html">Групи проектів</a>
+        <a href="../areas.html">Групи угод</a>
+        <a href="../equipment.html">Обладанння</a>
+        <a href="../workers.html">Працівники</a>
+        <a href="../projects.html">Проекти</a>
+        <a href="../specialties.html">Спеціальності</a>
+        <a href="../attribute_types.html">Типи атрибутів</a>
+        <a href="../agreements.html">Угоди</a>
+    </div>
+    <div class="navSeparator">Запити</div>
+    <div class="navBody">
+        <a href="../queries/query1-1.html">Запит 1.1</a>
+        <a href="../queries/query1-2.html">Запит 1.2</a>
+        <a href="../queries/query2.html">Запит 2</a>
+        <a href="../queries/query3-1.html">Запит 3.1</a>
+        <a href="../queries/query3-2.html">Запит 3.2</a>
+        <a href="../queries/query4.html">Запит 4</a>
+        <a href="../queries/query5-1.html">Запит 5.1</a>
+        <a href="../queries/query5-2.html">Запит 5.2</a>
+        <a href="../queries/query6.html">Запит 6</a>
+        <a href="../queries/query7-1.html">Запит 7.1</a>
+        <a href="../queries/query7-2.html">Запит 7.2</a>
+        <a href="../queries/query8-1.html">Запит 8.1</a>
+        <a href="../queries/query8-2.html">Запит 8.2</a>
+        <a href="../queries/query9.html">Запит 9</a>
+        <a href="../queries/query10-1.html">Запит 10.1</a>
+        <a href="../queries/query10-2.html">Запит 10.2</a>
+        <a href="../queries/query11.html">Запит 11</a>
+        <a href="../queries/query12-1.html">Запит 12.1</a>
+        <div class="navDisabled">Запит 12.2</div>
+        <a href="../queries/query13.html">Запит 13</a>
+    </div>
+    <div class="navBottom">Богдан Гаврилюк @ 2018</div>
+</div>
+<div id="main" ng-controller = "AppCtrl as ctrl">
+    <div class="container-fluid">
+        <div class="panel-heading"> Запит 12-2: Співвідношення вартості договорів до залучених людських ресурсів </div>
+        <div class="datagrid">
+            <table >
+                <thead>
+                <tr>
+                    <!--<th width="40px">ID</th>-->
+                    <th><a href="#" ng-click="ctrl.changeSort('project.name')">Опис проекту</a>
+                        <span ng-show="sortType == 'project.name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'project.name' && sortReverse" class="fa fa-caret-up"></span>
+                    </th>
+                    <th><a href="#" ng-click="ctrl.changeSort('efficiency')">Вигідність</a>
+                        <span ng-show="sortType == 'efficiency' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'efficiency' && sortReverse" class="fa fa-caret-up"></span>
+                    </th>
+                    <th><a href="#" ng-click="ctrl.changeSort('project.price')">Ціна</a>
+                        <span ng-show="sortType == 'project.price' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'project.price' && sortReverse" class="fa fa-caret-up"></span>
+                    </th>
+                    <th><a href="#" ng-click="ctrl.changeSort('project.from')">Від</a>
+                        <span ng-show="sortType == 'project.from' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'project.from' && sortReverse" class="fa fa-caret-up"></span>
+                    </th>
+                    <th><a href="#" ng-click="ctrl.changeSort('project.to')">До</a>
+                        <span ng-show="sortType == 'project.to' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'project.to' && sortReverse" class="fa fa-caret-up"></span>
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat = "item in entries | orderBy:sortType:sortReverse">
+                    <!--<td>{{item.id}}</td>-->
+                    <td>{{item.project.name}}</td>
+                    <td>{{item.efficiency}}</td>
+                    <td>{{item.project.price}}</td>
+                    <td>{{item.project.from}}</td>
+                    <td>{{item.project.to}}</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="../js/libs/jquery-3.3.1.min.js"></script>
+<script src="../js/libs/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../js/libs/angular.min.js"></script>
+<script type="text/javascript" src="../js/queries/query12-2.js"></script>
+
+</html>
