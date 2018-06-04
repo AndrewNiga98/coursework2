@@ -10,14 +10,18 @@ public class Brigade {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
+    public String name;
     public String brigadier;
     @ManyToOne
     ConstructionTechnology constructionTechnology;
     @ManyToOne
     Object object; //CHANGE
 
-    public Brigade(String brigadier, ConstructionTechnology constructionTechnology, Object object)
+
+    public Brigade(String name, String brigadier, ConstructionTechnology constructionTechnology, Object object)
     {
+        this.name=name;
+
         this.brigadier = brigadier;
         this.constructionTechnology = constructionTechnology;
         this.object = object;
@@ -26,6 +30,14 @@ public class Brigade {
     public Brigade()
     {
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId() {

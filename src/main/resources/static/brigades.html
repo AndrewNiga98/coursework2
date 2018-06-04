@@ -48,6 +48,9 @@
                 <thead>
                 <tr>
                     <!--<th width="40px">ID</th>-->
+                    <th><a href="#" ng-click="ctrl.changeSort('name')">Номер бригади</a>
+                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span></th>
                     <th><a href="#" ng-click="ctrl.changeSort('brigadier')">Бригадир</a>
                         <span ng-show="sortType == 'brigadier' && !sortReverse" class="fa fa-caret-down"></span>
                         <span ng-show="sortType == 'brigadier' && sortReverse" class="fa fa-caret-up"></span></th>
@@ -69,12 +72,13 @@
                 <tbody>
                 <tr ng-repeat = "item in entries | orderBy:sortType:sortReverse">
                     <!--<td>{{item.id}}</td>-->
+                    <td>{{item.name}}</td>
                     <td>{{item.brigadier}}</td>
                     <td>{{item.constructionTechnology.name}}</td>
                     <td>{{item.object.name}}</td>
                     <td style="padding: 0px">
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.start_update_entry(item.id, item.brigadier, item.constructionTechnology.id, item.object.id)"
+                                ng-click="ctrl.start_update_entry(item.id, item.name, item.brigadier, item.constructionTechnology.id, item.object.id)"
                                 style="width: 40px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
@@ -100,6 +104,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <div class="row">
+                            <div class="column left">Номер бригади</div>
+                            <div class="column right"><input type="text" id="Name"></div>
+                        </div>
                         <div class="row">
                             <div class="column left">Бригадир</div>
                             <div class="column right"><input type="text" id="Brigadier"></div>
@@ -134,6 +142,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <div class="row">
+                            <div class="column left">Номер бригади</div>
+                            <div class="column right"><input type="text" id="NameUPD"></div>
+                        </div>
                         <div class="row">
                             <div class="column left">Бригадир</div>
                             <div class="column right"><input type="text" id="BrigadierUPD"></div>

@@ -33,15 +33,15 @@ app.controller("AppCtrl", function ($http, $scope) {
     };
 
     this.insert_entry = function add() {
-        let name = document.getElementById("Name").value;
-        let position = document.getElementById("Position").value;
+        let name = document.getElementById("TheName").value;
+        let position = document.getElementById("ThePosition").value;
         let brigadeIndex = document.getElementById("Brigade").selectedIndex;
         let brigadeId = document.getElementById("Brigade").options[brigadeIndex].value;
-
-        $http.get('/api/employee/insert?name='+name+'&position='+position+'&brigadeId='+brigadeId).then(function (response){
+        $http.get('/api/employee/insert?name='+name+'&position='+position+'&brigadeId='+brigadeId).then(function (response) {
             window.location.reload();
-            window.alert('Робітника було успішно додано!');
-        });
+            window.alert("Робітника було успішно додано");
+
+        })
     };
 
     let thisId;
@@ -83,6 +83,7 @@ app.controller("AppCtrl", function ($http, $scope) {
             window.location.reload();
             window.alert('Робітника було успішно змінено!');
         });
+
     };
 
     this.changeSort = function changeSort(column) {

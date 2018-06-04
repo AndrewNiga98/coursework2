@@ -20,30 +20,31 @@ body {
 .datagrid {
     font: normal 12px/150% Calibri, Helvetica, sans-serif;
     background: #fff;
-    border: 1px solid #814e9f;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border: 1px solid #068d5f;
+    margin-bottom: 60px;
     overflow: hidden;
 }
 
+.datagrid table thead {
+    background: linear-gradient(to right, rgba(32,115,74,1) 0%, rgba(0,164,112,1) 100%);
+}
+
 .datagrid table thead th {
-    background: #61438b;
     color: whitesmoke;
     font-size: 18px;
     font-weight: bold;
-    border-left: 1px solid #ae53cd;
+    border-left: 1px solid #066e48;
     padding-left: 8px;
     height: 38px;
 }
 
 .datagrid table thead th:first-child {
-    border: none;
+    border-left: none;
 }
 
 .datagrid table tbody td {
     color: #0f0f0f;
-    border-left: 1px solid #814e9f;
+    border-left: 1px solid #068d5f;
     font-size: 15px;
     font-weight: normal;
     padding-left: 8px;
@@ -54,8 +55,7 @@ body {
 }
 
 .datagrid table tbody tr:nth-child(even) {
-    background: #cdbeff;
-    /*background: #fff5d8;*/
+    background: #b5efc5;
     color: #0f0f0f;
 }
 
@@ -118,7 +118,7 @@ button {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #61438b;
+    background-color: #368561;
     overflow-x: hidden;
     transition: 0.5s;
     text-align: left;
@@ -135,12 +135,13 @@ button {
     font-size: 16px;
     color: whitesmoke;
     display: block;
-    border-bottom: 1px solid #372b56;
+    border-bottom: 1px solid #2c593c;
     height: 36px;
+    border-bottom-right-radius: 10px;
 }
 
 .sidenav a:hover {
-    background-color: #543f7a;
+    background-color: #32724f;
 }
 
 .navDisabled {
@@ -149,17 +150,18 @@ button {
     font-size: 18px;
     color: whitesmoke;
     display: block;
-    border-bottom: 1px solid #372b56;
-    background-color: #6a5591;
+    background-color: #659c81;
     height: 36px;
+    border-bottom: 1px solid #2c593c;
 }
 
 .navTitle {
-    padding: 16px;
+    padding: 8px 8px 8px 16px;
     font-size: 26px;
-    background-color: #4e386e;
-    border-bottom: 3px solid #372b56;
+    background: linear-gradient(to right, rgba(32,115,74,1) 0%, rgba(0,164,112,1) 100%);
+    border-bottom: 3px solid #2b5638;
     height: 70px;
+    border-bottom-right-radius: 10px;
 }
 
 .titleLogo {
@@ -169,7 +171,8 @@ button {
 .titleText {
     display: inline-block;
     vertical-align: top;
-    padding-top: 2px;
+    padding-top: 8px;
+    padding-left: 8px;
 }
 
 .navSeparator {
@@ -177,19 +180,21 @@ button {
     padding-top: 12px;
     padding-bottom: 12px;
     font-size: 22px;
-    border-bottom: 2px solid #382e5c;
+    background: linear-gradient(to right, rgba(32,115,74,1) 0%, rgba(0,164,112,1) 100%);
+    border-bottom: 2px solid #2b5638;
+    border-bottom-right-radius: 10px;
 }
 
 .navBody {
-    background-color: #4e386e;
-    border-bottom: 1px solid #855aaf;
+    background-color: #368561;
+    border-bottom: 1px solid #42bc8d;
     font-weight: normal;
 }
 
 .navBottom {
-    padding-left: 16px;
     padding-top: 12px;
     font-weight: normal;
+    text-align: center;
 }
 
 tr a, tr a:hover {

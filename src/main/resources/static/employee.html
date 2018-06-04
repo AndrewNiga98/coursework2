@@ -54,9 +54,9 @@
                     <th><a href="#" ng-click="ctrl.changeSort('position')">Посада</a>
                         <span ng-show="sortType == 'position' && !sortReverse" class="fa fa-caret-down"></span>
                         <span ng-show="sortType == 'position' && sortReverse" class="fa fa-caret-up"></span></th>
-                    <th><a href="#" ng-click="ctrl.changeSort('brigade.brigadier')">Бригадир</a>
-                        <span ng-show="sortType == 'brigade.brigadier' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'brigade.brigadier' && sortReverse" class="fa fa-caret-up"></span></th></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('brigade.name')">Номер бригади</a>
+                        <span ng-show="sortType == 'brigade.name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'brigade.name' && sortReverse" class="fa fa-caret-up"></span></th></th>
                     <th width="60px" style="padding: 0px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
                                 style="width: 60px; cursor:pointer;" ng-click="ctrl.start_insert_entry()">
@@ -71,7 +71,7 @@
                     <!--<td>{{item.id}}</td>-->
                     <td>{{item.name}}</td>
                     <td>{{item.position}}</td>
-                    <td>{{item.brigade.brigadier}}</td>
+                    <td>{{item.brigade.name}}</td>
                     <td style="padding: 0px">
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
                                 ng-click="ctrl.start_update_entry(item.id, item.name, item.position, item.brigade.id)"
@@ -96,20 +96,20 @@
                     <div class="modal-header">
                         <h4 class="modal-title" id="addModalLabel">Додавання запису</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
-                            <span aria-hidden="true">×</span>
+                            <span aria-hidden="true">?</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="column left">Ім'я</div>
-                            <div class="column right"><input type="text" id="Name"></div>
+                            <div class="column right"><input type="text" id="TheName"></div>
                         </div>
                         <div class="row">
                             <div class="column left">Посада</div>
-                            <div class="column right"><input type="text" id="Position"></div>
+                            <div class="column right"><input type="text" id="ThePosition"></div>
                         </div>
                         <div class="row">
-                            <div class="column left">Бригадир</div>
+                            <div class="column left">Номер бригади</div>
                             <div class="column right"><select id="Brigade"></select></div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="updateModalLabel">Редагування запису</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
-                            <span aria-hidden="true">×</span>
+                            <span aria-hidden="true">?</span>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -142,7 +142,7 @@
                             <div class="column right"><input type="text" id="PositionUPD"></div>
                         </div>
                         <div class="row">
-                            <div class="column left">Бригадир</div>
+                            <div class="column left">Номер бригади</div>
                             <div class="column right"><select id="BrigadeUPD"></select></div>
                         </div>
                     </div>

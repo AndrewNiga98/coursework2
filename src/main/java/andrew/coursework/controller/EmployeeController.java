@@ -41,17 +41,17 @@ public class EmployeeController {
     @RequestMapping("/employee/insert")
     public Employee insert(@RequestParam  String name, String position, int brigadeId)
     {
-       Brigade brigade = new Brigade(null, null, null);
-       brigade.setId(brigadeId);
-       Employee employee = new Employee(name, position, brigade);
-       return service.insert(employee);
+        Brigade brigade = new Brigade(null,null, null, null);
+        brigade.setId(brigadeId);
+        Employee employee = new Employee(name, position, brigade);
+        return service.insert(employee);
 
     }
 
     @RequestMapping("/employee/update")
     public Employee update(@RequestParam int id, String name, String position, int brigadeId)
     {
-        Brigade brigade = new Brigade(null, null, null);
+        Brigade brigade = new Brigade(null,null, null, null);
         brigade.setId(brigadeId);
         Employee employee = new Employee(name, position, brigade);
         employee.setId(id);

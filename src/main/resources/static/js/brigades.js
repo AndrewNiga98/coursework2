@@ -45,13 +45,14 @@ app.controller("AppCtrl", function ($http, $scope) {
     };
 
     this.insert_entry = function add() {
+        let number = document.getElementById("Name").value;
         let name = document.getElementById("Brigadier").value;
         let technologyIndex = document.getElementById("ConstructionTechnology").selectedIndex;
         let technologyId = document.getElementById("ConstructionTechnology").options[technologyIndex].value;
         let objectIndex = document.getElementById("ObjectName").selectedIndex;
         let objectId = document.getElementById("ObjectName").options[objectIndex].value;
 
-        $http.get('/api/brigades/insert?brigadier='+name+'&constructionTechnologyId='+technologyId+'&objectId='+objectId).then(function (response){
+        $http.get('/api/brigades/insert?name='+number+'&brigadier='+name+'&constructionTechnologyId='+technologyId+'&objectId='+objectId).then(function (response){
             window.location.reload();
             window.alert("Бригаду було успішно додано!");
         });
@@ -59,7 +60,7 @@ app.controller("AppCtrl", function ($http, $scope) {
 
     let thisId;
 
-    this.start_update_entry = function upd(id, name, technologyId, objectId) {
+    this.start_update_entry = function upd(id, number, name, technologyId, objectId) {
         thisId = id;
         let technologyIndex;
         $http.get('/api/construction_technology').then(function (response){
@@ -104,11 +105,12 @@ app.controller("AppCtrl", function ($http, $scope) {
         });
 
 
-
+        document.getElementById("NameUPD").value=number;
         document.getElementById("BrigadierUPD").value = name;
     };
 
     this.update_entry = function upd() {
+        let number = document.getElementById("NameUPD").value;
         let name = document.getElementById("BrigadierUPD").value;
         let technologyIndex = document.getElementById("ConstructionTechnologyUPD").selectedIndex;
         let technologyId = document.getElementById("ConstructionTechnologyUPD").options[technologyIndex].value;
@@ -116,7 +118,7 @@ app.controller("AppCtrl", function ($http, $scope) {
         let objectId = document.getElementById("ObjectNameUPD").options[objectIndex].value;
 
 
-        $http.get('/api/brigades/update?id='+thisId+'&brigadier='+name+'&constructionTechnologyId='+technologyId+'&objectId='+objectId).then(function (response){
+        $http.get('/api/brigades/update?id='+thisId+'&name='+number+'&brigadier='+name+'&constructionTechnologyId='+technologyId+'&objectId='+objectId).then(function (response){
             window.location.reload();
             window.alert("Бригаду було успішно змінено!");
         });

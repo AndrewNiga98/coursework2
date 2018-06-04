@@ -40,20 +40,20 @@ public class BrigadeController {
     }
 
     @RequestMapping("/brigades/insert")
-    public Brigade insert(@RequestParam  String brigadier, int constructionTechnologyId, int objectId)
+    public Brigade insert(@RequestParam String name,  String brigadier, int constructionTechnologyId, int objectId)
     {
         ConstructionTechnology constructionTechnology = new ConstructionTechnology(null);
         Object object = new Object(null, null, null);
         object.setId(objectId);
         constructionTechnology.setId(constructionTechnologyId);
-        Brigade brigade = new Brigade(brigadier, constructionTechnology, object);
+        Brigade brigade = new Brigade(name, brigadier, constructionTechnology, object);
         return service.insert(brigade);
 
 
     }
 
     @RequestMapping("/brigades/update")
-    public Brigade update(@RequestParam int id, String brigadier, int constructionTechnologyId, int objectId)
+    public Brigade update(@RequestParam int id, String name, String brigadier, int constructionTechnologyId, int objectId)
     {
         /*BuildingManagement buildingManagement = new BuildingManagement(null);
         buildingManagement.setId(buildingManagementId);
@@ -65,7 +65,7 @@ public class BrigadeController {
         constructionTechnology.setId(constructionTechnologyId);
         Object object = new Object(null, null, null);
         object.setId(objectId);
-        Brigade brigade = new Brigade(brigadier, constructionTechnology, object);
+        Brigade brigade = new Brigade(name, brigadier, constructionTechnology, object);
         brigade.setId(id);
         return service.update(brigade);
 
