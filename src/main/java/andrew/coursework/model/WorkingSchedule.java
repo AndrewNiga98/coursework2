@@ -2,6 +2,7 @@ package andrew.coursework.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -12,8 +13,8 @@ public class WorkingSchedule {
     @Id
     @GeneratedValue
     public int id;
-    public LocalDate startOfJob;
-    public LocalDate endOfJob;
+    public Date startOfJob;
+    public Date endOfJob;
     @ManyToOne
     ConstructionTechnology constructionTechnology;
     @ManyToOne
@@ -21,7 +22,7 @@ public class WorkingSchedule {
     @ManyToOne
     Machinery machinery;
 
-    public WorkingSchedule(LocalDate startOfJob, LocalDate endOfJob, ConstructionTechnology constructionTechnology, Object object, Machinery machinery) {
+    public WorkingSchedule(Date startOfJob, Date endOfJob, ConstructionTechnology constructionTechnology, Object object, Machinery machinery) {
         this.startOfJob = startOfJob;
         this.endOfJob = endOfJob;
         this.constructionTechnology = constructionTechnology;
@@ -40,19 +41,19 @@ public class WorkingSchedule {
         this.id = id;
     }
 
-    public LocalDate getStartOfJob() {
+    public Date getStartOfJob() {
         return startOfJob;
     }
 
-    public void setStartOfJob(LocalDate startOfJob) {
+    public void setStartOfJob(Date startOfJob) {
         this.startOfJob = startOfJob;
     }
 
-    public LocalDate getEndOfJob() {
+    public Date getEndOfJob() {
         return endOfJob;
     }
 
-    public void setEndOfJob(LocalDate endOfJob) {
+    public void setEndOfJob(Date endOfJob) {
         this.endOfJob = endOfJob;
     }
 

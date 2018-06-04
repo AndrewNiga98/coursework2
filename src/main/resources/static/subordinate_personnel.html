@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Технології будівництва</title>
+    <title>Підпорядкований персонал</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
           integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
@@ -16,14 +16,14 @@
         <div class="titleText">Ziggy Ent.</div>
     </div>
     <div class="navBody">
-        <a href="../">Титульна сторінка</a>
+        <a href="..">Титульна сторінка</a>
     </div>
     <div class="navSeparator">Таблиці</div>
     <div class="navBody">
         <a href="areas.html">Ділянки</a>
         <a href="building_management.html">Буд. керування</a>
         <a href="characteristics.html">Характеристики</a>
-        <div class="navDisabled"> Технології будівництва </div>
+        <a href="construction_technology.html">Технології будівництва</a>
         <a href="engineering_stuff.html">Інженерний персонал</a>
         <a href="machinery.html">Техніка</a>
         <a href="material.html">Матеріал</a>
@@ -33,8 +33,12 @@
         <a href="employee.html">Робітники</a>
         <a href="estimate.html">Кошторис</a>
         <a href="report.html">Звіт</a>
-        <a href="subordinate_personnel.html">Підпорядкований персонал</a>
+        <div class="navDisabled"> Підпорядкований персонал</div>
+        <div>                                                 </div>
         <a href="working_schedule.html">Робочий графік</a>
+
+
+
     </div>
     <div class="navSeparator">Запити</div>
 
@@ -42,15 +46,22 @@
 </div>
 <div id="main" ng-controller = "AppCtrl as ctrl">
     <div class="container-fluid">
-        <div class="panel-heading"> Технології будівництваа</div>
+        <div class="panel-heading">Підпорядкований персонал
+        </div>
         <div class="datagrid">
             <table >
                 <thead>
                 <tr>
                     <!--<th width="40px">ID</th>-->
-                    <th><a href="#" ng-click="ctrl.changeSort('name')">Назва характеристики</a>
-                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('position')">Посада</a>
+                        <span ng-show="sortType == 'position' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'position' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('buildingManagement.name')">Буд.керування</a>
+                        <span ng-show="sortType == 'buildingManagement.name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'buildingManagement.name' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('engineeringStuff.name')">Ім'я інженерного персоналу</a>
+                        <span ng-show="sortType == 'engineeringStuff.name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'engineeringStuff.name' && sortReverse" class="fa fa-caret-up"></span></th></th>
                     <th width="60px" style="padding: 0px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
                                 style="width: 60px; cursor:pointer;" ng-click="ctrl.start_insert_entry()">
@@ -63,10 +74,12 @@
                 <tbody>
                 <tr ng-repeat = "item in entries | orderBy:sortType:sortReverse">
                     <!--<td>{{item.id}}</td>-->
-                    <td>{{item.name}}</td>
+                    <td>{{item.position}}</td>
+                    <td>{{item.buildingManagement.name}}</td>
+                    <td>{{item.engineeringStuff.name}}</td>
                     <td style="padding: 0px">
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.start_update_entry(item.id, item.name)"
+                                ng-click="ctrl.start_update_entry(item.id, item.position, item.buildingManagement.id, item.engineeringStuff.id)"
                                 style="width: 40px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
@@ -93,8 +106,16 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="column left">Назва технології</div>
-                            <div class="column right"><input type="text" id="Name"></div>
+                            <div class="column left">Посада</div>
+                            <div class="column right"><input type="text" id="Position"></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Буд.керування</div>
+                            <div class="column right"><select id="BuildingManagement"></select></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Ім'я</div>
+                            <div class="column right"><select id="EngineeringStuff"></select></div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -104,6 +125,7 @@
                 </div>
             </div>
         </div>
+
 
         <!--редагування-->
         <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
@@ -118,8 +140,16 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="column left">Назва технології</div>
-                            <div class="column right"><input type="text" id="NameUPD"></div>
+                            <div class="column left">Посада</div>
+                            <div class="column right"><input type="text" id="PositionUPD"></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Буд.керування</div>
+                            <div class="column right"><select id="BuildingManagementUPD"></select></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Ім'я</div>
+                            <div class="column right"><select id="EngineeringStuffUPD"></select></div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -137,6 +167,6 @@
 <script src="js/libs/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="js/libs/angular.min.js"></script>
-<script type="text/javascript" src="js/construction_technology.js"></script>
+<script type="text/javascript" src="js/subordinate_personnel.js"></script>
 
 </html>

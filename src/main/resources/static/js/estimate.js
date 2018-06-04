@@ -109,14 +109,14 @@ app.controller("AppCtrl", function ($http, $scope) {
     };
 
     this.update_entry = function upd() {
-        let name = document.getElementById("AmountUPD").value;
+        let amount = document.getElementById("AmountUPD").value;
         let materialIndex = document.getElementById("MaterialUPD").selectedIndex;
-        let materialIndex = document.getElementById("MaterialUPD").options[typeIndex].value;
-        let objectOmdex = document.getElementById("ObjectUPD").selectedIndex;
-        let areaId = document.getElementById("ObjectUPD").options[areaIndex].value;
+        let materiald = document.getElementById("MaterialUPD").options[materialIndex].value;
+        let objectIndex = document.getElementById("ObjectUPD").selectedIndex;
+        let objectId = document.getElementById("ObjectUPD").options[objectIndex].value;
 
 
-        $http.get('/api/objects/update?id='+thisId+'&name='+name+'&typeId='+typeOfObjectId+'&areaId='+areaId).then(function (response){
+        $http.get('/api/estimate/update?id='+thisId+'&amount='+amount+'&materialId='+materiald+'&areaId='+objectId).then(function (response){
             window.location.reload();
             window.alert("Кошторис було успішно змінено!");
         });

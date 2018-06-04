@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
@@ -42,7 +43,7 @@ public class WorkingScheduleController {
     }
 
     @RequestMapping("/working_schedule/insert")
-    public WorkingSchedule insert(@RequestParam LocalDate start_of_job, LocalDate end, int constructionTechnologyId, int objectId, int machineryId) {
+    public WorkingSchedule insert(@RequestParam Date start_of_job, Date end, int constructionTechnologyId, int objectId, int machineryId) {
 
         ConstructionTechnology constructionTechnology = new ConstructionTechnology(null);
         constructionTechnology.setId(constructionTechnologyId);
@@ -58,7 +59,7 @@ public class WorkingScheduleController {
     }
 
     @RequestMapping("/working_schedule/update")
-    public WorkingSchedule update(@RequestParam int id, LocalDate start_of_job, LocalDate end, int constructionTechnologyId, int objectId, int machineryId)
+    public WorkingSchedule update(@RequestParam int id, Date start_of_job, Date end, int constructionTechnologyId, int objectId, int machineryId)
     {
         ConstructionTechnology constructionTechnology = new ConstructionTechnology(null);
         constructionTechnology.setId(constructionTechnologyId);

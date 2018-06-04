@@ -19,7 +19,7 @@ public class SubordinatePersonnelController {
 
     @Autowired
     SubordinatePersonnelService service;
-    @RequestMapping("/subordinatepersonnel")
+    @RequestMapping("/subordinate_personnel")
     public List<SubordinatePersonnel> getAll()
     {
         List<SubordinatePersonnel> list = service.getAll();
@@ -27,19 +27,19 @@ public class SubordinatePersonnelController {
         return service.getAll();
     }
 
-    @RequestMapping("/subordinatepersonnel/get")
+    @RequestMapping("/subordinate_personnel/get")
     public SubordinatePersonnel getById(@RequestParam int id)
     {
         return service.getById(id);
     }
 
-    @RequestMapping("/subordinatepersonnel/del")
+    @RequestMapping("/subordinate_personnel/del")
     public void delete(@RequestParam int id)
     {
         service.delete(id);
     }
 
-    @RequestMapping("/subordinatepersonnel/insert")
+    @RequestMapping("/subordinate_personnel/insert")
     public SubordinatePersonnel insert(@RequestParam String position, int buildingmanagementId, int engineeringstuffId) {
 
         BuildingManagement buildingManagement = new BuildingManagement(null, null);
@@ -51,7 +51,7 @@ public class SubordinatePersonnelController {
 
     }
 
-    @RequestMapping("/subordinatepersonnel/update")
+    @RequestMapping("/subordinate_personnel/update")
     public SubordinatePersonnel update(@RequestParam int id, String position, int buildingmanagementId, int engineeringstuffId)
     {
         BuildingManagement buildingManagement = new BuildingManagement(null, null);

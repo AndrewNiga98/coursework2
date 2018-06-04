@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Технології будівництва</title>
+    <title>Робочий графік</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
           integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
@@ -22,9 +22,8 @@
     <div class="navBody">
         <a href="areas.html">Ділянки</a>
         <a href="building_management.html">Буд. керування</a>
-        <a href="characteristics.html">Характеристики</a>
-        <div class="navDisabled"> Технології будівництва </div>
-        <a href="engineering_stuff.html">Інженерний персонал</a>
+        <a href="machinery.html"> Характеристика </a>
+        <a href="construction_technology.html">Технології будівництва</a>
         <a href="machinery.html">Техніка</a>
         <a href="material.html">Матеріал</a>
         <a href="type_of_object.html">Тип об'єкту</a>
@@ -34,7 +33,7 @@
         <a href="estimate.html">Кошторис</a>
         <a href="report.html">Звіт</a>
         <a href="subordinate_personnel.html">Підпорядкований персонал</a>
-        <a href="working_schedule.html">Робочий графік</a>
+        <div class="navDisabled">Робочий графік</div>
     </div>
     <div class="navSeparator">Запити</div>
 
@@ -42,15 +41,27 @@
 </div>
 <div id="main" ng-controller = "AppCtrl as ctrl">
     <div class="container-fluid">
-        <div class="panel-heading"> Технології будівництваа</div>
+        <div class="panel-heading">Робочий графік</div>
         <div class="datagrid">
             <table >
                 <thead>
                 <tr>
                     <!--<th width="40px">ID</th>-->
-                    <th><a href="#" ng-click="ctrl.changeSort('name')">Назва характеристики</a>
-                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('starfOfJob')">Початок роботи</a>
+                        <span ng-show="sortType == 'starfOfJob' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'starfOfJob' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('endOfJob')">Кінець роботи</a>
+                        <span ng-show="sortType == 'endOfJob' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'endOfJob' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('constructionTechnology.name')">Будівельна технологія</a>
+                        <span ng-show="sortType == 'constructionTechnology.name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'constructionTechnology.name' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('object.name')">Назва об'єкту</a>
+                        <span ng-show="sortType == 'object.name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'object.name' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('machinery.name')">Технологія</a>
+                        <span ng-show="sortType == 'machinery.name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'machinery.name' && sortReverse" class="fa fa-caret-up"></span></th>
                     <th width="60px" style="padding: 0px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
                                 style="width: 60px; cursor:pointer;" ng-click="ctrl.start_insert_entry()">
@@ -63,10 +74,14 @@
                 <tbody>
                 <tr ng-repeat = "item in entries | orderBy:sortType:sortReverse">
                     <!--<td>{{item.id}}</td>-->
-                    <td>{{item.name}}</td>
+                    <td>{{item.startOfJob}}</td>
+                    <td>{{item.endOfJob}}</td>
+                    <td>{{item.constructionTechnology.name}}</td>
+                    <td>{{item.object.name}}</td>
+                    <td>{{item.machinery.name}}</td>
                     <td style="padding: 0px">
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.start_update_entry(item.id, item.name)"
+                                ng-click="ctrl.start_update_entry(item.id, item.startOfJob, item.endOfJob, item.constructionTechnology.id, item.object.id, item.machinery.id)"
                                 style="width: 40px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
@@ -93,8 +108,24 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="column left">Назва технології</div>
-                            <div class="column right"><input type="text" id="Name"></div>
+                            <div class="column left">Початок роботи</div>
+                            <div class="column right"><input type="date" id="Start"></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Кінець роботи</div>
+                            <div class="column right"><input type="date" id="End"></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Будівельна технологія</div>
+                            <div class="column right"><select id="Technology"></select></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Об'єкт</div>
+                            <div class="column right"><select id="Object"></select></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Техніка</div>
+                            <div class="column right"><select id="Machinery"></select></div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -118,8 +149,24 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="column left">Назва технології</div>
-                            <div class="column right"><input type="text" id="NameUPD"></div>
+                            <div class="column left">Початок роботи</div>
+                            <div class="column right"><input type="date" id="StartUPD"></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Кінець роботи</div>
+                            <div class="column right"><input type="date" id="EndUPD"></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Будівельна технологія</div>
+                            <div class="column right"><select id="TechnologyUPD"></select></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Об'єкт</div>
+                            <div class="column right"><select id="ObjectUPD"></select></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Техніка</div>
+                            <div class="column right"><select id="MachineryUPD"></select></div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -137,6 +184,6 @@
 <script src="js/libs/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="js/libs/angular.min.js"></script>
-<script type="text/javascript" src="js/construction_technology.js"></script>
+<script type="text/javascript" src="js/working_schedule.js"></script>
 
 </html>

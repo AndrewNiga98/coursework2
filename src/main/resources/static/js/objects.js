@@ -102,9 +102,6 @@ app.controller("AppCtrl", function ($http, $scope) {
 
             document.getElementById("AreaUPD").selectedIndex = areaIndex;
         });
-
-
-
         document.getElementById("NameUDP").value = name;
     };
 
