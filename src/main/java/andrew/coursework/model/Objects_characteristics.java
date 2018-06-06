@@ -13,10 +13,13 @@ public class Objects_characteristics {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
-    @ManyToMany
+    //@Column(name = "object_id")
+    @ManyToOne(fetch=FetchType.EAGER)
     Object object;
-    @ManyToMany
+    //@Column(name = "characteristic_id")
+    @ManyToOne(fetch=FetchType.EAGER)
     Characteristic characteristic;
+    @Column(name = "value")
     public String value;
 
     public Objects_characteristics (Object object, Characteristic characteristic, String value)

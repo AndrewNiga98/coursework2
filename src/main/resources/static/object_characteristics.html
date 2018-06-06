@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Кошторис</title>
+    <title>Характеристики об'єктів</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
           integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
@@ -26,7 +26,7 @@
         <a href="areas.html">Ділянки</a>
         <a href="report.html">Звіт</a>
         <a href="engineering_stuff.html"> Інженерний персонал</a>
-        <div class="navDisabled">Кошторис</div>
+        <a href="estimate.html">Кошторис</a>
         <a href="material.html">Матеріал</a>
         <a href="subordinate_personnel.html">Підпорядкований персонал</a>
         <a href="objects.html">Об'єкти</a>
@@ -35,7 +35,7 @@
         <a href="machinery.html">Техніка</a>
         <a href="construction_technology.html">Технології будівництва</a>
         <a href="type_of_object.html">Тип об'єкту</a>
-        <a href="object_characteristics.html">Характеристика об'єктів</a>
+        <div class="navDisabled">Характеристика об'єктів</div>
         <a href="characteristics.html">Характеристики</a>
 
     </div>
@@ -45,21 +45,21 @@
 </div>
 <div id="main" ng-controller = "AppCtrl as ctrl">
     <div class="container-fluid">
-        <div class="panel-heading">Кошторис</div>
+        <div class="panel-heading">Характеристики об'єктів</div>
         <div class="datagrid">
             <table >
                 <thead>
                 <tr>
                     <!--<th width="40px">ID</th>-->
-                    <th><a href="#" ng-click="ctrl.changeSort('amount')">Кількість</a>
-                        <span ng-show="sortType == 'amount' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'amount' && sortReverse" class="fa fa-caret-up"></span></th>
-                    <th><a href="#" ng-click="ctrl.changeSort('material.name')">Тип матеріалу</a>
-                        <span ng-show="sortType == 'material.name' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'material.name' && sortReverse" class="fa fa-caret-up"></span></th>
                     <th><a href="#" ng-click="ctrl.changeSort('object.name')">Назва об'єкту</a>
                         <span ng-show="sortType == 'object.name' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'object.name' && sortReverse" class="fa fa-caret-up"></span></th></th>
+                        <span ng-show="sortType == 'object.name' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('characteristic.name')">Тип об'єкту</a>
+                        <span ng-show="sortType == 'characteristic.name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'characteristic.name' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('value')">Значення</a>
+                        <span ng-show="sortType == 'value' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'value' && sortReverse" class="fa fa-caret-up"></span></th></th>
                     <th width="60px" style="padding: 0px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
                                 style="width: 60px; cursor:pointer;" ng-click="ctrl.start_insert_entry()">
@@ -72,12 +72,12 @@
                 <tbody>
                 <tr ng-repeat = "item in entries | orderBy:sortType:sortReverse">
                     <!--<td>{{item.id}}</td>-->
-                    <td>{{item.amount}}</td>
-                    <td>{{item.material.name}}</td>
                     <td>{{item.object.name}}</td>
+                    <td>{{item.characteristic.name}}</td>
+                    <td>{{item.value}}</td>
                     <td style="padding: 0px">
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.start_update_entry(item.id, item.amount, item.material.id, item.object.id)"
+                                ng-click="ctrl.start_update_entry(item.id, item.object.id, item.characteristic.id, item.value)"
                                 style="width: 40px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
@@ -104,16 +104,16 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="column left">Кількість</div>
-                            <div class="column right"><input type="number" min="100" max ="1000000" id="Amount"></div>
-                        </div>
-                        <div class="row">
-                            <div class="column left">Матеріал</div>
-                            <div class="column right"><select id="Material"></select></div>
-                        </div>
-                        <div class="row">
-                            <div class="column left">Об'єкт</div>
+                            <div class="column left">Назва об'єкту</div>
                             <div class="column right"><select id="Object"></select></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Тип об'єкту</div>
+                            <div class="column right"><select id="Characteristic"></select></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Значення</div>
+                            <div class="column right"><input type="text" id="value"></div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -138,16 +138,16 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="column left">Кількість</div>
-                            <div class="column right"><input type="number" min="100" max ="1000000" id="AmountUPD"></div>
-                        </div>
-                        <div class="row">
-                            <div class="column left">Матеріал</div>
-                            <div class="column right"><select id="MaterialUPD"></select></div>
-                        </div>
-                        <div class="row">
-                            <div class="column left">Об'єкт</div>
+                            <div class="column left">Назва об'єкту</div>
                             <div class="column right"><select id="ObjectUPD"></select></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Тип об'єкту</div>
+                            <div class="column right"><select id="CharacteristicUPD"></select></div>
+                        </div>
+                        <div class="row">
+                            <div class="column left">Значення</div>
+                            <div class="column right"><input type="text" id="valueUPD"></div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -165,6 +165,6 @@
 <script src="js/libs/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="js/libs/angular.min.js"></script>
-<script type="text/javascript" src="js/estimate.js"></script>
+<script type="text/javascript" src="js/objects_characteristics.js"></script>
 
 </html>

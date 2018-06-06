@@ -26,19 +26,19 @@ public class ObjectsCharacteristicsController {
         return service.getAll();
     }
 
-    @RequestMapping("/report/get")
+    @RequestMapping("/objects_characteristics/get")
     public Objects_characteristics getById(@RequestParam int id)
     {
         return service.getById(id);
     }
 
-    @RequestMapping("/report/del")
+    @RequestMapping("/objects_characteristics/del")
     public void delete(@RequestParam int id)
     {
         service.delete(id);
     }
 
-    @RequestMapping("/report/insert")
+    @RequestMapping("/objects_characteristics/insert")
     public Objects_characteristics insert(@RequestParam int objectId, int characteristicId, String value ) {
 
         Object object = new Object(null, null, null);
@@ -50,7 +50,7 @@ public class ObjectsCharacteristicsController {
 
     }
 
-    @RequestMapping("/report/update")
+    @RequestMapping("/objects_characteristics/update")
     public Objects_characteristics update(@RequestParam int id, int objectId, int characteristicId, String value )
     {
         Object object = new Object(null, null, null);
@@ -59,7 +59,7 @@ public class ObjectsCharacteristicsController {
         characteristic.setId(characteristicId);
         Objects_characteristics objects_characteristics = new Objects_characteristics(object, characteristic, value);
         objects_characteristics.setId(id);
-        return service.insert(objects_characteristics);
+        return service.update(objects_characteristics);
 
     }
 }

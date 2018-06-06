@@ -49,4 +49,10 @@ public class BuildingManagementController {
         return service.update(buildingManagement);
 
     }
+
+   @RequestMapping("/building_management/getByName")
+    public List<BuildingManagement> getAll1()
+    {
+        return service.getAll();
+    }
 }

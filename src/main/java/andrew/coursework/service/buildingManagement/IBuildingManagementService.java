@@ -10,5 +10,6 @@ public interface IBuildingManagementService {
     BuildingManagement insert(BuildingManagement buildingManagement);
     BuildingManagement update(BuildingManagement buildingManagement);
     BuildingManagement getById(int id);
+    List<BuildingManagement> getAll1();
     void delete(int id);
 }

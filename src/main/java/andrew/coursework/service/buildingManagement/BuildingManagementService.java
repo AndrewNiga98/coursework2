@@ -35,5 +35,10 @@ public class BuildingManagementService implements IBuildingManagementService{
     public void delete(int id) {
         repository.deleteById(id);
     }
+    @Override
+    public List<BuildingManagement> getAll1()
+    {
+        return (List<BuildingManagement>)repository.findAll();
+    }
 
 }
