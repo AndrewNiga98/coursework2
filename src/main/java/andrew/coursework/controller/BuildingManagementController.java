@@ -50,9 +50,4 @@ public class BuildingManagementController {
 
     }
 
-   @RequestMapping("/building_management/getByName")
-    public List<BuildingManagement> getAll1()
-    {
-        return service.getAll();
-    }
 }

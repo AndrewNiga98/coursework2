@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Запит 2</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="icon" href="../res/favicon.ico">
+</head>
+<body ng-app = "coursework">
+<div id="menuSidenav" class="sidenav">
+    <div class="navTitle">
+        <img class="titleLogo" src="../res/logo.svg">
+        <div class="titleText">Ziggy Ent.</div>
+    </div>
+    <div class="navBody">
+        <a href="../">Титульна сторінка</a>
+    </div>
+    <div class="navSeparator">Таблиці</div>
+    <div class="navBody">
+
+    </div>
+    <div class="navSeparator">Запити</div>
+    <div class="navBody">
+
+        <div class="navDisabled">Запит 1</div>
+
+    </div>
+    <div class="navBottom">Андрій Нігайчук @ 2018</div>
+</div>
+<div id="main" ng-controller = "AppCtrl as ctrl">
+    <div class="container-fluid">
+        <div class="panel-heading"> Запит 2: Ділянки та їх начальники </div>
+
+        <div class="datagrid">
+            <table >
+                <thead>
+                <tr>
+                    <!--<th width="40px">ID</th>-->
+                    <th><a href="#" ng-click="ctrl.changeSort('name')">Назва керування</a>
+                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                    </th>
+                    <th><a href="#" ng-click="ctrl.changeSort('chief_of_area')">Начальник ділянки</a>
+                        <span ng-show="sortType == 'chief_of_area' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'chief_of_area' && sortReverse" class="fa fa-caret-up"></span>
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat = "item in entries | orderBy:sortType:sortReverse">
+                    <!--<td>{{item.id}}</td>-->
+                    <td>{{item.name}}</td>
+                    <td>{{item.chief_of_area}}</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script type="text/javascript" src="js/libs/jquery-3.3.1.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/libs/angular.min.js"></script>
+<script type="text/javascript" src="js/query2.js"></script>
+
+
+</html>

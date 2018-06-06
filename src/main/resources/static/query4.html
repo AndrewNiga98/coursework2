@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Інженерний персонал</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="res/favicon.ico">
+</head>
+<body ng-app = "coursework">
+<div id="menuSidenav" class="sidenav">
+    <div class="navTitle">
+        <img class="titleLogo" src="res/logo.svg">
+        <div class="titleText">Ziggy Ent.</div>
+    </div>
+    <div class="navBody">
+        <a href="../">Титульна сторінка</a>
+    </div>
+    <div class="navSeparator">Таблиці</div>
+    <div class="navBody">
+
+        <a href="brigades.html">Бригади</a>
+        <a href="building_management.html">Буд. керування</a>
+        <a href="areas.html">Ділянки</a>
+        <a href="report.html">Звіт</a>
+        <div class="navDisabled"> Інженерний персонал</div>
+        <a href="estimate.html">Кошторис</a>
+        <a href="material.html">Матеріал</a>
+        <a href="subordinate_personnel.html">Підпорядкований персонал</a>
+        <a href="objects.html">Об'єкти</a>
+        <a href="employee.html">Робітники</a>
+        <a href="working_schedule.html">Робочий графік</a>
+        <a href="machinery.html">Техніка</a>
+        <a href="construction_technology.html">Технології будівництва</a>
+        <a href="type_of_object.html">Тип об'єкту</a>
+        <a href="object_characteristics.html">Характеристика об'єктів</a>
+        <a href="characteristics.html">Характеристики</a>
+
+    </div>
+    <div class="navSeparator">Запити</div>
+
+    <div class="navBottom">Андрій Нігайчук @ 2018</div>
+</div>
+
+<div id="main" ng-controller = "AppCtrl as ctrl">
+    <div class="container-fluid">
+        <div class="panel-heading"> Запит 4: Об'єкти на ділянках </div>
+        <div class="queryOption">
+            Буд.керування:<br>
+            <select id="Area" class="queryInput" onchange="updateOutside()"></select>
+        </div>
+        <div class="datagrid">
+            <table >
+                <thead>
+                <tr>
+                    <!--<th width="40px">ID</th>-->
+                    <th><a href="#" ng-click="ctrl.changeSort('name')">Назва об'єкту</a>
+                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('typeOfObject.name')">Тип об'єкту</a>
+                        <span ng-show="sortType == 'typeOfObject.name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'typeOfObject.name' && sortReverse" class="fa fa-caret-up"></span></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat = "item in entries | orderBy:sortType:sortReverse">
+                    <!--<td>{{item.id}}</td>-->
+                    <td>{{item.name}}</td>
+                    <td>{{item.typeOfObject.name}}</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="js/libs/jquery-3.3.1.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/libs/angular.min.js"></script>
+<script type="text/javascript" src="js/query4.js"></script>
+
+</html>

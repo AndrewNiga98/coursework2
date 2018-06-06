@@ -11,6 +11,6 @@ import java.util.List;
 public interface BuildingManagementRepository extends CrudRepository<BuildingManagement, Integer> {
 
    @Query("select management from BuildingManagement management")
-    List<BuildingManagement> getAll1();
+    List<BuildingManagement>  selectAllBManagement();
 
 }
