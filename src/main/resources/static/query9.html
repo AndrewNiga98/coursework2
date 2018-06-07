@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Інженерний персонал</title>
+    <title>Звіт про об'єкт</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
           integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
@@ -54,30 +54,34 @@
 
 <div id="main" ng-controller = "AppCtrl as ctrl">
     <div class="container-fluid">
-        <div class="panel-heading"> Запит 3: Інженери в будівельних керуваннях </div>
+        <div class="panel-heading"> Запит 9: Звіт про об'єкт </div>
         <div class="queryOption">
             Буд.керування:<br>
-            <select id="Management" class="queryInput" onchange="updateOutside()"></select>
+            <select id="Object" class="queryInput" onchange="updateOutside()"></select>
         </div>
         <div class="datagrid">
             <table >
                 <thead>
                 <tr>
                     <!--<th width="40px">ID</th>-->
-                    <th><a href="#" ng-click="ctrl.changeSort('name')">Ім'я</a>
-                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span></th>
-                    <th><a href="#" ng-click="ctrl.changeSort('position')">Посада</a>
-                        <span ng-show="sortType == 'position' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'position' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('spentAmount')">Витрачена к-сть</a>
+                        <span ng-show="sortType == 'spentAmount' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'spentAmount' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('endOfJob')">Кінець роботи</a>
+                        <span ng-show="sortType == 'endOfJob' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'endOfJob' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('material.name')">Матеріал</a>
+                        <span ng-show="sortType == 'material.name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'material.name' && sortReverse" class="fa fa-caret-up"></span></th>
                 </tr>
                 </thead>
 
                 <tbody>
                 <tr ng-repeat = "item in entries | orderBy:sortType:sortReverse">
                     <!--<td>{{item.id}}</td>-->
-                    <td>{{item.name}}</td>
-                    <td>{{item.position}}</td>
+                    <td>{{item.spentAmount}}</td>
+                    <td>{{item.endOfJob}}</td>
+                    <td>{{item.material.name}}</td>
                 </tbody>
             </table>
         </div>
@@ -89,6 +93,6 @@
 <script src="js/libs/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="js/libs/angular.min.js"></script>
-<script type="text/javascript" src="js/query3.js"></script>
+<script type="text/javascript" src="js/query9.js"></script>
 
 </html>
