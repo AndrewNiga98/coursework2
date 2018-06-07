@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Об'єкти на ділянках</title>
+    <title>Техніка на об'єктах</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
           integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
@@ -46,30 +46,26 @@
 
 <div id="main" ng-controller = "AppCtrl as ctrl">
     <div class="container-fluid">
-        <div class="panel-heading"> Запит 4: Об'єкти на ділянках </div>
+        <div class="panel-heading"> Запит 7: Техніка на об'єктах </div>
         <div class="queryOption">
             Буд.керування:<br>
-            <select id="Area" class="queryInput" onchange="updateOutside()"></select>
+            <select id="Object" class="queryInput" onchange="updateOutside()"></select>
         </div>
         <div class="datagrid">
             <table >
                 <thead>
                 <tr>
                     <!--<th width="40px">ID</th>-->
-                    <th><a href="#" ng-click="ctrl.changeSort('name')">Назва об'єкту</a>
-                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span></th>
-                    <th><a href="#" ng-click="ctrl.changeSort('typeOfObject.name')">Тип об'єкту</a>
-                        <span ng-show="sortType == 'typeOfObject.name' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'typeOfObject.name' && sortReverse" class="fa fa-caret-up"></span></th>
+                    <th><a href="#" ng-click="ctrl.changeSort('machinery.name')">Назва техніки</a>
+                        <span ng-show="sortType == 'machinery.name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'machinery.name' && sortReverse" class="fa fa-caret-up"></span></th>
                 </tr>
                 </thead>
 
                 <tbody>
                 <tr ng-repeat = "item in entries | orderBy:sortType:sortReverse">
                     <!--<td>{{item.id}}</td>-->
-                    <td>{{item.name}}</td>
-                    <td>{{item.typeOfObject.name}}</td>
+                    <td>{{item.machinery.name}}</td>
                 </tbody>
             </table>
         </div>
@@ -81,6 +77,6 @@
 <script src="js/libs/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="js/libs/angular.min.js"></script>
-<script type="text/javascript" src="js/query4.js"></script>
+<script type="text/javascript" src="js/query7.js"></script>
 
 </html>

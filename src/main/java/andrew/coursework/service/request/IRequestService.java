@@ -14,12 +14,12 @@ public interface IRequestService {
     List<Area> selectAllArea();
     List<EngineeringStuff> selectEngineersByBuildingManagement(int managementId);
     /*List <EngineeringStuff> selectEngineersByArea(String areaName);*/
-    /*List <Object> selectObjectByBuildingManagement(int managementId);*/
+    List <Object> selectObjectByBuildingManagement(int managementId);
     List <Object> selectObjectByArea(int areaId);
-    /*List <Employee> selectEmployeeByObject(String objectName);
-    /*List <Machinery> selectMachineryByManagement(String managementName);
-    /*List <Machinery> selectMachineryByObject(String objectName);
-    /*List <Report> selectReportByObject(String objectName);
+    List <Employee> selectEmployeeByObject(int objectId);
+    List <WorkingSchedule> selectMachineryByObject(int objectId);
+    List <WorkingSchedule> selectMachineryByManagement(int managementId);
+    List <Report> selectReportByObject(int objectId);
     /* List <Object> selectObjectByScheduleAndTechnology(Date from, Date to, String technology);
     /* List <Object> selectObjectByManagementAndScheduleAndTechnology(Date from, Date to, String technology, String management);
     /* List <ConstructionTechnology> selectTechnologyByDate();

@@ -45,6 +45,40 @@ public class RequestController {
         return requestService.selectObjectByArea(areaId);
     }
 
+    @RequestMapping("/request5")
+    List<Object> selectObjectByBuildingManagement(@RequestParam int managementId)
+    {
+        return requestService.selectObjectByBuildingManagement(managementId);
+    }
+    @RequestMapping("/request6")
+    List<Employee> selectEmployeeByObject(@RequestParam int objectId)
+    {
+        return requestService.selectEmployeeByObject(objectId);
+    }
+   /* @RequestMapping("/request7")
+    List<WorkingSchedule> selectMachineryByManagement(@RequestParam int managementId)
+    {
+        return requestService.selectMachineryByManagement(managementId);
+    }*/
+
+   @RequestMapping("/request7")
+   List<WorkingSchedule> selectMachineryByObject(@RequestParam int objectId)
+   {
+       return requestService.selectMachineryByObject(objectId);
+   }
+
+   @RequestMapping("/request8")
+    List<WorkingSchedule> selectMachineryByManagement(@RequestParam int managementId)
+   {
+       return requestService.selectMachineryByManagement(managementId);
+   }
+
+   @RequestMapping("/request9")
+   List<Report> selectReportByObject(@RequestParam int objectId)
+   {
+       return requestService.selectReportByObject(objectId);
+   }
+
 
 
 

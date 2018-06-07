@@ -12,7 +12,6 @@ public class Employee {
     public int id;
     public String name;
     public String position;
-
     @ManyToOne
     Brigade brigade;
 

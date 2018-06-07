@@ -13,4 +13,6 @@ public interface ObjectRepository extends CrudRepository<Object, Integer>{
 
     @Query("select objects From Object objects where objects.area.id=:areaId")
     List<Object> selectObjectByArea(@Param("areaId") int areaId);
+    @Query("select objects From Object objects where objects.area.buildingManagement.id=:managementId")
+    List<Object> selectObjectByBuildingManagement(@Param("managementId") int managementId);
 }

@@ -19,6 +19,12 @@ public class RequestService implements IRequestService{
     EngineeringStuffRepository engineeringStuffRepository;
     @Autowired
     ObjectRepository objectRepository;
+    @Autowired
+    EmployeeRepository employeeRepository;
+    @Autowired
+    WorkingScheduleRepository workingScheduleRepository;
+    @Autowired
+    ReportRepository reportRepository;
     @Override
     public List<BuildingManagement> selectAllBManagement()
     {
@@ -40,20 +46,42 @@ public class RequestService implements IRequestService{
     {
         return objectRepository.selectObjectByArea(areaId);
     }
+
+    @Override
+    public List <Object> selectObjectByBuildingManagement(int managementId)
+    {
+        return objectRepository.selectObjectByBuildingManagement(managementId);
+    }
+    @Override
+    public List <Employee> selectEmployeeByObject(int objectId)
+    {
+        return employeeRepository.selectEmployeeByObject(objectId);
+    }
+
+    @Override
+    public List <WorkingSchedule> selectMachineryByObject(int objectId)
+    {
+        return workingScheduleRepository.selectMachineryByObject(objectId);
+    }
+
+   @Override
+    public List <WorkingSchedule> selectMachineryByManagement(int managementId)
+    {
+        return workingScheduleRepository.selectMachineryByManagement(managementId);
+    }
+    @Override
+    public List <Report> selectReportByObject(int objectId)
+    {
+        return reportRepository.selectReportByObject(objectId);
+    }
     /*@Override
     public List <EngineeringStuff> selectEngineersByArea(String areaName)
     {
         return engineeringStuffRepository.
     }/*
+
+
     @Override
-    public List <Object> selectObjectByBuildingManagement(String managementName);
-   /*  @Override
-    public  List <Object> selectObjectByArea(String areaName);
-   /*  @Override
-    public List <Employee> selectEmployeeByObject(String objectName);
-   /*  @Override
-    public List <Machinery> selectMachineryByManagement(String managementName);
-  /*   @Override
     public List <Machinery> selectMachineryByObject(String objectName);
   /*   @Override
     public List <Report> selectReportByObject(String objectName);
